@@ -1,8 +1,7 @@
 #include <map>
 #include <set>
 
-#include "./file.hpp"
-#include "./reader.cpp"
+#include "./reader.hpp"
 
 #ifndef _dep_graph_
 #define _dep_graph_

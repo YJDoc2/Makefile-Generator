@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include "makefile_generator.cpp"
+#include "topological_util.cpp"
 
 
 int main(){
 
     dependency_graph dg1,dg2,dg3,dg4,dg5,dg6,dg7;
-    makefile_generator mkgen;
+    topological_util mkgen;
 
 
     dg1.add_dependency("f1","f2");
@@ -18,6 +18,10 @@ int main(){
     }else{
         std::cout<<"First Graph does not contain any cycles"<<std::endl;
     }
+
+    std::cout<<"Topological Order is :";
+    mkgen.print_topologic_order(dg1);
+    std::cout<<std::endl;
 
 
     dg2.add_dependency("f1","f2");
@@ -43,6 +47,10 @@ int main(){
         
     }
 
+    std::cout<<"Topological Order is :";
+    mkgen.print_topologic_order(dg3);
+    std::cout<<std::endl;
+
     dg4.add_dependency("f1","f3");
     dg4.add_dependency("f2","f3");
     dg4.add_dependency("f3","f4");
@@ -53,6 +61,10 @@ int main(){
         std::cout<<"Fourth Graph does not contain any cyclic dependencies"<<std::endl;
         
     }
+
+    std::cout<<"Topological Order is :";
+    mkgen.print_topologic_order(dg4);
+    std::cout<<std::endl;
 
     dg5.add_dependency("f1","f2");
     dg5.add_dependency("f1","f4");

@@ -2,9 +2,8 @@
 #include <set>
 #include <iostream>
 
-#include "./file.hpp"
-#include "./reader.hpp"
 #include "./dependency_graph.hpp"
+
 
 void dependency_graph::add_dependency(const std::string of,const std::string dependency){
 

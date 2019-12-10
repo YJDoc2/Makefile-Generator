@@ -2,9 +2,10 @@
 #include <list>
 #include <fstream>
 #include <iostream>
-#include "./file.hpp"
-#include "./dependency_graph.cpp"
+
+#include "./dependency_graph.hpp"
 #include "./dependency_graph_generator.hpp"
+
 
 
 using dgg = dependency_graph_generator;
