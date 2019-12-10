@@ -7,14 +7,14 @@
 class dependency_graph_generator{
 
     private:
-        std::set<file> visited;
-        std::list<file> enqued;
+        std::set<std::string> visited;
+        std::list<std::string> enqued;
         dependency_graph dg;
 
     public:
-        dependency_graph get_dependency_graph(const file& f);
-        void generate_dependencies(const file& f);
-        bool is_visited(const file& f);
+        dependency_graph get_dependency_graph(const std::string& f);
+        void generate_dependencies(const std::string& f);
+        bool is_visited(const std::string& f);
 
 
 };

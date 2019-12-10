@@ -6,14 +6,14 @@
 
 
 int main(){
-    file f1("a.c");
-    file f2("b.c");
-    file f3("c.c");
+    std::string f1("a.c");
+    std::string f2("b.c");
+    std::string f3("c.c");
 
     dependency_graph dg;
     dg.add_dependency(f1,f2);
     dg.add_dependency(f1,f3);
-    auto g = dg.get_set();
+    auto g = dg.get_graph();
 
     if(dg.is_dependent(f1,f2)){
         std::cout<<"f1 depends on f2"<<std::endl;
