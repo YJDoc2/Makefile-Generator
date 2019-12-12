@@ -4,7 +4,8 @@
 
 #include "./dependency_graph_generator.hpp"
 
-
+#ifndef _topo_util_
+#define _topo_util_
 class topological_util{
 
     private:
@@ -30,3 +31,4 @@ class topological_util{
 
 
 };
+#endif

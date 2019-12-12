@@ -4,7 +4,8 @@
 
 #include "./topological_util.hpp"
 
-
+#ifndef _mkgen_
+#define _mkgen_
 class makefile_generator{
 
     private:
@@ -22,3 +23,5 @@ class makefile_generator{
 
 
 };
+
+#endif

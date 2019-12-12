@@ -1,7 +1,8 @@
 #include <string>
 #include <exception>
 
-
+#ifndef _mk_excp_
+#define _mk_excp_
 class mkgen_exception  : std::exception{
 
     private:
@@ -15,3 +16,4 @@ class mkgen_exception  : std::exception{
         }
 
 };
+#endif
