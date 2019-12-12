@@ -3,9 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "./dependency_graph.hpp"
 #include "./dependency_graph_generator.hpp"
-
 
 
 using dgg = dependency_graph_generator;
@@ -34,9 +32,6 @@ void dgg::generate_dependencies(const std::string& f){
             enqued.push_back(tmp);
         }
     }
-
-
-
 }
 
 bool dgg::is_visited(const std::string& f){

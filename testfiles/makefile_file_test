@@ -1,0 +1,9 @@
+a.out : ./file.o file_test.o 
+	g++  -o a.out ./file.o file_test.o 
+
+file_test.o : ./file.hpp 
+	g++ -c  file_test.cpp
+
+./file.o : ./file.hpp ./mkgen_exception.hpp 
+	g++ -c  ./file.cpp
+

@@ -36,7 +36,6 @@ std::set<std::string> dependency_graph::get_adjecency_list(const std::string& v)
     if(itr != graph.end()){
        return itr->second;
     }else{
-        //throw std::string("Error");
         return std::set<std::string>();
     }
 }

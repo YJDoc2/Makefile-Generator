@@ -1,9 +1,9 @@
-mkgen : ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./makefile_generator.o ./reader.o ./topological_util.o main.o 
-	g++ -std=c++17 -o mkgen ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./makefile_generator.o ./reader.o ./topological_util.o main.o 
+a.out : ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./makefile_generator.o ./reader.o ./topological_util.o mkgen_test.o 
+	g++ -std=c++17 -o a.out ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./makefile_generator.o ./reader.o ./topological_util.o mkgen_test.o 
 	rm ./*.o
 
-main.o : ./file.hpp ./makefile_generator.hpp 
-	g++ -c -std=c++17 main.cpp
+mkgen_test.o : ./makefile_generator.hpp 
+	g++ -c -std=c++17 mkgen_test.cpp
 
 ./makefile_generator.o : ./makefile_generator.hpp ./topological_util.hpp 
 	g++ -c -std=c++17 ./makefile_generator.cpp

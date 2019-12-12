@@ -1,6 +1,7 @@
 #include <map>
 #include <stack>
-#include "./dependency_graph.hpp"
+#include <list>
+
 #include "./dependency_graph_generator.hpp"
 
 
@@ -10,6 +11,7 @@ class topological_util{
         std::map<std::string,bool> visited;
         std::map<std::string,bool> circ_stack;
         std::stack<std::string> topo_stack;
+        std::list<std::string> dep_list;
         void prepare_maps(const dependency_graph& dg);
         //Taken from https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
         bool is_cyclic(std::string current,const dependency_graph& dg);

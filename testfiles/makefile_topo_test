@@ -1,0 +1,21 @@
+a.out : ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./reader.o ./topological_util.o topo_test.o 
+	g++  -o a.out ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./reader.o ./topological_util.o topo_test.o 
+
+topo_test.o : ./topological_util.hpp 
+	g++ -c  topo_test.cpp
+
+./topological_util.o : ./topological_util.hpp ./dependency_graph_generator.hpp 
+	g++ -c  ./topological_util.cpp
+
+./dependency_graph_generator.o : ./dependency_graph_generator.hpp ./dependency_graph.hpp 
+	g++ -c  ./dependency_graph_generator.cpp
+
+./dependency_graph.o : ./dependency_graph.hpp ./reader.hpp 
+	g++ -c  ./dependency_graph.cpp
+
+./reader.o : ./reader.hpp ./file.hpp 
+	g++ -c  ./reader.cpp
+
+./file.o : ./file.hpp ./mkgen_exception.hpp 
+	g++ -c  ./file.cpp
+

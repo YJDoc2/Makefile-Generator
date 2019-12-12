@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "./file.hpp"
 #include "./topological_util.hpp"
 
 
@@ -17,7 +16,7 @@ class makefile_generator{
         
         
     public:
-        void set_compile_options(mk_data in_data);
+        void set_options(mk_data& in_data);
         void generate_makefile(std::string main_file);
 
 

@@ -1,6 +1,8 @@
 #include <string>
 #include <set>
 
+#include "./mkgen_exception.hpp"
+
 #ifndef _file_
 #define _file_
 

@@ -5,7 +5,7 @@
 filetype get_type(const std::string& in){
     auto dot_pos = in.find_last_of('.');
     if(dot_pos == std::string::npos){
-        throw std::string("No file Extention found");
+        throw mkgen_exception("No file Extention found in dependency "+in);
     }
     auto ext = in.substr(dot_pos+1,3);
 
@@ -18,7 +18,7 @@ filetype get_type(const std::string& in){
     }else if( ext.compare("hpp") == 0){
         return filetype::HPP;
     }else{
-        throw std::string("Invalid File type...Only c and c++ file are supported");
+        throw mkgen_exception("Invalid File type : "+in+" ...Only c and c++ file are supported");
     }
 }
 
@@ -52,7 +52,7 @@ std::string get_code_file(const std::string file){
         ret[ret.find_last_of('h')] = 'c';
         return ret;
     }
-    throw std::string("Err");
+    throw mkgen_exception("Error...Code should not reach here -> in get_code_file");
 }
 
 std::string get_H_file(const std::string file){
@@ -72,7 +72,7 @@ std::string get_H_file(const std::string file){
         ret[ret.find_last_of('c')] = 'h';
         return ret;
     }
-    throw std::string("Err");
+    throw mkgen_exception("Error...Code should not reach here -> in get_H_file");
 }
 
 std::string get_compiler(const std::string file,const mk_data data){
@@ -85,7 +85,7 @@ std::string get_compiler(const std::string file,const mk_data data){
     if(type == filetype::HPP || type == filetype::CPP){
         return data.cpp_comp;
     }
-    throw std::string("Err");
+    throw mkgen_exception("Error...Code should not reach here -> in get_compiler");
 }
 
 std::string get_dep_str(const std::string file,const std::set<std::string> list){

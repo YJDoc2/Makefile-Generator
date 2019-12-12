@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "./file.cpp"
+#include "../file.cpp"
 
 void print_files(std::string file){
     std::cout<<"File : "<<file<<std::endl;

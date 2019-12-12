@@ -1,6 +1,9 @@
 
 #include <list>
 #include <iostream>
+#include <exception>
+
+
 #include "./topological_util.hpp"
 
 void topological_util::prepare_maps(const dependency_graph& dg){
@@ -31,8 +34,9 @@ bool topological_util::conatains_circular_dependencies(const dependency_graph& d
 bool topological_util::is_cyclic(std::string current,const dependency_graph& dg){
     
     if(!visited[current]){
-        visited[current] = true;;
+        visited[current] = true;
         circ_stack[current] = true;
+        dep_list.push_back(current);
 
         auto adj_list = dg.get_adjecency_list(current);
         
@@ -55,7 +59,11 @@ std::list<std::string> topological_util::get_topological_order(const dependency_
     std::list<std::string> ret;
 
     if(conatains_circular_dependencies(dg)){
-        throw std::string("The Given graph contains circular dependencies.");
+        std::string dep_string = "";
+        for (auto &dep : dep_list){
+            dep_string += dep+" -> ";
+        }
+        throw mkgen_exception("Given Files contain Circular Dependencies : "+dep_string);
     }
 
     prepare_maps(dg);
