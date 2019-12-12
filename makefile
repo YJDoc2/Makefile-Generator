@@ -1,21 +1,24 @@
-a.out : reader.o dependency_graph.o dependency_graph_generator.o topological_util.o topo_sort_test.o file.o
-	g++ topo_sort_test.o dependency_graph.o dependency_graph_generator.o reader.o makefile_generator.o file.o
+test : ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./makefile_generator.o ./mkgen_test.o ./reader.o ./topological_util.o 
+	g++ -o test ./dependency_graph.o ./dependency_graph_generator.o ./file.o ./makefile_generator.o ./mkgen_test.o ./reader.o ./topological_util.o 
 
-topo_sort_test.o:
-	g++ -c topo_sort_test.cpp
+./mkgen_test.o : ./makefile_generator.hpp 
+	g++ -c ./mkgen_test.cpp
 
-topological_util.o:
-	g++ -c topological_util.cpp
+./makefile_generator.o : ./makefile_generator.hpp ./file.hpp ./topological_util.hpp 
+	g++ -c ./makefile_generator.cpp
 
-dependency_graph_generator.o:
-	g++ -c dependency_graph_generator.cpp
+./topological_util.o : ./topological_util.hpp ./dependency_graph.hpp ./dependency_graph_generator.hpp 
+	g++ -c ./topological_util.cpp
 
-dependency_graph.o:
-	g++ -c dependency_graph.cpp
+./dependency_graph_generator.o : ./dependency_graph_generator.hpp ./dependency_graph.hpp 
+	g++ -c ./dependency_graph_generator.cpp
 
+./dependency_graph.o : ./dependency_graph.hpp ./reader.hpp 
+	g++ -c ./dependency_graph.cpp
 
-reader.o : 
-	g++ -c reader.cpp
+./reader.o : ./reader.hpp ./file.hpp 
+	g++ -c ./reader.cpp
 
-file.o:
-	g++ -c file.cpp
+./file.o : ./file.hpp 
+	g++ -c ./file.cpp
+

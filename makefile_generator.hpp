@@ -1,26 +1,24 @@
 
 #include <iostream>
+#include <fstream>
 
-#include "file.hpp";
-#include "./dependency_graph_generator.hpp"
+#include "./file.hpp"
+#include "./topological_util.hpp"
 
-struct mk_data{
-    std::string c_comp = "gcc";
-    std::string cpp_comp = "g++";
-    std::string comp_op ="";
-    std::string out_name = "a.out";
-    bool clean_o = true;
-
-};
 
 class makefile_generator{
 
     private:
         mk_data data;
+        std::ofstream writer;
+        dependency_graph dg;
+        void add_outputfile_to_mkf(std::list<std::string> t_order);
+        void add_dependencies_to_mkf(std::list<std::string> t_order);
+        
         
     public:
         void set_compile_options(mk_data in_data);
-        void generate_makefile(std::string main_file) const;
+        void generate_makefile(std::string main_file);
 
 
 
