@@ -24,6 +24,7 @@ void makefile_generator::generate_makefile(std::string main_file) {
         auto t_order = tu.get_topological_order(dg);
         add_outputfile_to_mkf(t_order);
         add_dependencies_to_mkf(t_order);
+        writer<<std::endl<<"clean : "<<std::endl<<"\trm ./*.o"<<std::endl;
     }catch(const mkgen_exception& e){
         throw e;
     }
