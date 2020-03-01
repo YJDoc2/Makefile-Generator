@@ -6,9 +6,9 @@
 #include "./makefile_generator.hpp"
 
 void set_option(std::string& option,std::string val){
-
-    val.erase(std::remove_if(val.begin(), val.end(), isspace), val.end());
-    if(val.length()<=0){
+    std::string temp = val;
+    temp.erase(std::remove_if(temp.begin(), temp.end(), isspace), temp.end());
+    if(temp.length()<=0){
         return;
     }else{
         option = val;

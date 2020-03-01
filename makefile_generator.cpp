@@ -55,15 +55,21 @@ void makefile_generator::add_outputfile_to_mkf(std::list<std::string> t_order) {
     }
     writer<<std::endl;
     writer<<"\t";
+    
+     
+
     if(is_all_c){
-        writer<<data.c_comp<<" "<<data.c_flags<<" -o "<<data.out_name<<" ";
+        writer<<data.c_comp<<" ";
     }else{
-        writer<<data.cpp_comp<<" "<<data.c_flags<<" -o "<<data.out_name<<" ";
+        writer<<data.cpp_comp<<" ";
     }
     
     for (auto &o_file : o_files){
         writer<<o_file<<" ";
     }
+
+    writer<<data.c_flags<<" -o "<<data.out_name<<" ";
+    
     writer<<std::endl;
     if(data.clean_o){
         writer<<"\t"<<"rm ./*.o"<<std::endl;
@@ -86,7 +92,7 @@ void makefile_generator::add_dependencies_to_mkf(std::list<std::string> t_order)
         auto dep_str = get_dep_str(o_dep,dep_list);
         writer<<o_file<<" : ";
         writer<<dep_str<<std::endl;
-        writer<<"\t"<<get_compiler(o_dep,data)<<" -c "<<data.c_flags<<" "<<get_code_file(o_dep)<<std::endl<<std::endl;
+        writer<<"\t"<<get_compiler(o_dep,data)<<" -c "<<get_code_file(o_dep)<<" "<<data.c_flags<<std::endl<<std::endl;
 
     }
 }
